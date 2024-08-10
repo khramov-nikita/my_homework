@@ -4,7 +4,7 @@ def get_mask_card_number(card_number: str) -> str:
         mask_card_number: str = f"{card_number[:4]} {card_number[4:6]}** **** {card_number[-4:]}"
         return mask_card_number
     else:
-        return "Неверный номер карты"
+        return "Неверные данные"
 
 
 def get_mask_account(account: str) -> str:
@@ -13,4 +13,4 @@ def get_mask_account(account: str) -> str:
         mask_account: str = f"**{account[-4:]}"
         return mask_account
     else:
-        return "Неверный номер счета"
+        return "Неверные данные"
