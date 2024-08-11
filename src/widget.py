@@ -10,11 +10,12 @@ def mask_account_card(account_card: str) -> str:
         if account_card[0:4] == "Счет" and len(account_card[5:]) == 20:
             split_acc = split_data
             split_acc[-1] = get_mask_account(split_acc[-1])
-            if split_acc[-1][0] == '*':
+            if split_acc[-1][0] == "*":
                 mask_acc: str = " ".join(split_acc)
                 return mask_acc
             else:
-                return split_acc[-1]
+                acc_number: str = split_acc[-1]
+                return acc_number
         else:
             split_card = split_data
             split_card[-1] = get_mask_card_number(split_card[-1])
@@ -22,7 +23,8 @@ def mask_account_card(account_card: str) -> str:
                 mask_card: str = " ".join(split_card)
                 return mask_card
             else:
-                return split_card[-1]
+                card_number: str = split_card[-1]
+                return card_number
     else:
         return "Неверные данные"
 
