@@ -13,7 +13,10 @@ def test_log(capsys: Any) -> None:
     assert "my_function called with args: (1, 2), kwargs:{}. Result: 3\n" in captured.out
 
     try:
-        my_function(0, 2)
+        my_function(1, "t")
     except TypeError:
         captured = capsys.readouterr()
-        assert "my function error: " in captured.out
+        assert (
+            "my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs:(1, 't'), {}\n"
+            in captured.out
+        )
