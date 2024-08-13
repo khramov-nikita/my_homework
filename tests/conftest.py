@@ -48,7 +48,7 @@ def transactions() -> list[dict]:
             "description": "Перевод организации",
             "from": "Visa Platinum 1246377376343588",
             "to": "Счет 14211924144426031657",
-        }
+        },
     ]
 
 
