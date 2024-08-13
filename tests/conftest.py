@@ -82,6 +82,7 @@ def sorted_by_date_reverse() -> list:
     ]
 
 
+@pytest.fixture
 def card_number() -> str:
     return "1234123412341234"
 
