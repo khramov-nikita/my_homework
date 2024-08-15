@@ -1,2 +1,0 @@
-my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs:(1, 't'), {}
-my_function called with args: (1, 2), kwargs:{}. Result: 3
