@@ -1,8 +1,8 @@
 from functools import wraps
-from typing import Any, Callable
+from typing import Any, Callable, Optional
 
 
-def log(filename: Any) -> Callable:
+def log(filename: Optional[str] = None) -> Callable:
     """
     Записывает вызов функции и ее результат в файл или в консоль
     """
@@ -18,12 +18,10 @@ def log(filename: Any) -> Callable:
             except Exception as e:
                 error_message = f"{func.__name__} error: {e}. Inputs:{args}, {kwargs}"
                 print(error_message)
+            else:
+                if not filename:
+                    print(log_message)
 
         return wrapper
 
     return decorator
-
-
-@log(filename="test_log.txt")
-def my_function(x: int, y: int) -> int:
-    return x + y

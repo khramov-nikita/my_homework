@@ -4,9 +4,10 @@ from src.decorators import log
 
 
 def test_log(capsys: Any) -> None:
-    @log(filename="test_log.txt")
+    @log()
     def my_function(x: Any, y: Any) -> Any:
         return x + y
+
     try:
         my_function(1, "t")
     except TypeError:
@@ -15,8 +16,16 @@ def test_log(capsys: Any) -> None:
             "my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs:(1, 't'), {}\n"
             in captured.out
         )
-    finally:
+
+
+def test_log_file(capsys: Any) -> None:
+    @log("test_log.txt")
+    def my_function(x: Any, y: Any) -> Any:
+        return x + y
+
+    try:
         my_function(1, 2)
-        with open("test_log.txt", 'r') as file:
+    except TypeError:
+        with open("test_log.txt", "r") as file:
             line = file.readline()
-            assert "my_function called with args: (1, 2), kwargs:{}. Result: 3" in line
+        assert "my_function called with args: (1, 2), kwargs:{}. Result: 3" in line
