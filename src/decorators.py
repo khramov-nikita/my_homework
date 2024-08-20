@@ -14,6 +14,7 @@ def log(filename: Optional[str] = None) -> Callable:
                 result = func(*args, **kwargs)
             except Exception as e:
                 log_message = f"{func.__name__} error: {e}. Inputs:{args}, {kwargs}"
+                raise e
             else:
                 log_message = f"{func.__name__} called with args: {args}, kwargs:{kwargs}. Result: {result}"
                 return result
