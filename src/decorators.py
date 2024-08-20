@@ -12,14 +12,16 @@ def log(filename: Optional[str] = None) -> Callable:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
-                log_message = f"{func.__name__} called with args: {args}, kwargs:{kwargs}. Result: {result}"
-                with open(filename, "a") as f:
-                    f.write(log_message + "\n")
             except Exception as e:
-                error_message = f"{func.__name__} error: {e}. Inputs:{args}, {kwargs}"
-                print(error_message)
+                log_message = f"{func.__name__} error: {e}. Inputs:{args}, {kwargs}"
             else:
-                if not filename:
+                log_message = f"{func.__name__} called with args: {args}, kwargs:{kwargs}. Result: {result}"
+                return result
+            finally:
+                if filename:
+                    with open(filename, "a") as f:
+                        f.write(log_message + "\n")
+                else:
                     print(log_message)
 
         return wrapper
