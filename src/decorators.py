@@ -20,7 +20,7 @@ def log(filename: Optional[str] = None) -> Callable:
                 return result
             finally:
                 if filename:
-                    with open(filename, "a") as f:
+                    with open(f"../data/{filename}", "a") as f:
                         f.write(log_message + "\n")
                 else:
                     print(log_message)
