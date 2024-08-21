@@ -1,6 +1,7 @@
-from unittest.mock import patch
-from src.external_api import transaction_sum
 from typing import Any
+from unittest.mock import patch
+
+from src.external_api import transaction_sum
 
 
 @patch("requests.get")
