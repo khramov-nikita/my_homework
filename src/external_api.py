@@ -10,6 +10,8 @@ def transaction_sum(transaction: dict) -> float:
     то конвертирует её в рубли
     """
 
+    if transaction["operationAmount"]["currency"]["code"] == "RUB":
+        return float(transaction["operationAmount"]["amount"])
     load_dotenv()
     payload = {
         "amount": transaction["operationAmount"]["amount"],
