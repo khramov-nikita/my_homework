@@ -1,7 +1,12 @@
 import logging
+import os
+
+
+masks_path = os.path.abspath(__file__)
+masks_log_path = os.path.join(masks_path[:-12], "logs", "masks.log")
 
 app_logger = logging.getLogger(__name__)
-file_handler = logging.FileHandler(filename="../logs/masks.log", encoding="utf-8")
+file_handler = logging.FileHandler(filename=masks_log_path, encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 app_logger.addHandler(file_handler)

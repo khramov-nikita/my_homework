@@ -1,5 +1,9 @@
 from functools import wraps
 from typing import Any, Callable, Optional
+import os
+
+
+decor_path = os.path.abspath(__file__)
 
 
 def log(filename: Optional[str] = None) -> Callable:
@@ -20,7 +24,8 @@ def log(filename: Optional[str] = None) -> Callable:
                 return result
             finally:
                 if filename:
-                    with open(f"../data/{filename}", "a") as f:
+                    with open(os.path.join(decor_path[:-18], "data", f"{filename}")
+, "a") as f:
                         f.write(log_message + "\n")
                 else:
                     print(log_message)
