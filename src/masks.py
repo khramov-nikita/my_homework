@@ -1,7 +1,6 @@
 import logging
 import os
 
-
 masks_path = os.path.abspath(__file__)
 masks_log_path = os.path.join(masks_path[:-12], "logs", "masks.log")
 

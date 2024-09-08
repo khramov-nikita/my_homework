@@ -1,6 +1,6 @@
-from src.utils import convert_json
 import os
 
+from src.utils import convert_json
 
 utils_path = os.path.abspath(__file__)
 utils_test_empty_path = os.path.join(utils_path[:-20], "data", "test_empty.json")

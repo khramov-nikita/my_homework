@@ -2,7 +2,6 @@ import json
 import logging
 import os
 
-
 utils_path = os.path.abspath(__file__)
 utils_log_path = os.path.join(utils_path[:-13], "logs", "utils.log")
 
