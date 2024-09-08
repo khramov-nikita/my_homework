@@ -1,5 +1,6 @@
 import pandas as pd
 import pytest
+from pandas.core.frame import DataFrame
 
 
 @pytest.fixture
@@ -1072,7 +1073,7 @@ def correct_json() -> list:
 
 
 @pytest.fixture
-def result_csv():
+def result_csv() -> list:
     return [
         {
             "id": "650703",
@@ -1100,7 +1101,7 @@ def result_csv():
 
 
 @pytest.fixture
-def result_excel():
+def result_excel() -> list:
     return [
         {
             "id": 650703,
@@ -1139,7 +1140,7 @@ def result_excel():
 
 
 @pytest.fixture
-def result_excel_dataframe():
+def result_excel_dataframe() -> DataFrame:
     return pd.DataFrame(
         [
             {
