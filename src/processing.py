@@ -1,3 +1,10 @@
+import os
+import re
+from collections import Counter
+
+processing_path = os.path.abspath(__file__)
+
+
 def filter_by_state(dict_list: list, state: str = "EXECUTED") -> list:
     """
     Функция возвращает список словарей с соответствующим
