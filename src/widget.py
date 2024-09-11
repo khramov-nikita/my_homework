@@ -5,7 +5,7 @@ def mask_account_card(account_card: str) -> str:
     """Функция маскирует номер счета или карты в зависимости от ввода"""
     if not account_card:
         return "Неверные данные"
-    split_data: list = account_card.split()
+    split_data: list = str(account_card).split()
     if split_data[0].isalpha() and split_data[-1].isdigit():
         if account_card[0:4] == "Счет" and len(account_card[5:]) == 20:
             split_acc = split_data

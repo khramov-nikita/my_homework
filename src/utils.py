@@ -17,14 +17,14 @@ app_logger.addHandler(file_handler)
 app_logger.setLevel(logging.DEBUG)
 
 
-def reading_json(json_data: str) -> list:
+def reading_json(path: str) -> list:
     """
     Функция принимает путь к json файлу и конвертирует указанный файл в python объект
     """
 
     try:
         app_logger.info("Попытка загрузки json фала")
-        with open(json_data, encoding="utf-8") as f:
+        with open(path, encoding="utf-8") as f:
             result: list = json.load(f)
     except Exception as e:
         app_logger.error(f"Неудачная попытка загрузки json файла: {e}")
