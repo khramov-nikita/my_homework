@@ -42,6 +42,9 @@ def get_date(date: str) -> str:
 
 
 def count_categories(data: list) -> Counter:
+    """
+    Функция подсчитывает количество категорий транзакций
+    """
     categories = []
     for transaction in data:
         categories.append(transaction.get("description"))
