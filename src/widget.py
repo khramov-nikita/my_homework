@@ -1,3 +1,5 @@
+from collections import Counter
+
 from src.masks import get_mask_account, get_mask_card_number
 
 
@@ -36,4 +38,12 @@ def get_date(date: str) -> str:
     if len(date) >= 10 and not f"{date[8:10]}{date[5:7]}{date[:4]}".isdigit():
         return "Неверные данные"
     result: str = f"{date[8:10]}.{date[5:7]}.{date[:4]}"
+    return result
+
+
+def count_categories(data: list) -> Counter:
+    categories = []
+    for transaction in data:
+        categories.append(transaction.get("description"))
+    result = Counter(categories)
     return result

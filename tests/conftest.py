@@ -1,3 +1,5 @@
+from collections import Counter
+
 import pandas as pd
 import pytest
 from pandas.core.frame import DataFrame
@@ -1182,7 +1184,8 @@ def result_excel_dataframe() -> DataFrame:
 
 @pytest.fixture
 def data() -> list:
-    return [{
+    return [
+        {
             "id": 441945886,
             "state": "EXECUTED",
             "date": "2019-08-26T10:50:58.294041",
@@ -1216,12 +1219,14 @@ def data() -> list:
             "operationAmount": {"amount": "48223.05", "currency": {"name": "руб.", "code": "RUB"}},
             "description": "Открытие вклада",
             "to": "Счет 41421565395219882431",
-        }]
+        },
+    ]
 
 
 @pytest.fixture
 def data_find() -> list:
-    return [{
+    return [
+        {
             "id": 441945886,
             "state": "EXECUTED",
             "date": "2019-08-26T10:50:58.294041",
@@ -1247,12 +1252,14 @@ def data_find() -> list:
             "description": "Перевод организации",
             "from": "Счет 75106830613657916952",
             "to": "Счет 11776614605963066702",
-        }]
+        },
+    ]
 
 
 @pytest.fixture
 def data_rub() -> list:
-    return [{
+    return [
+        {
             "id": 441945886,
             "state": "EXECUTED",
             "date": "2019-08-26T10:50:58.294041",
@@ -1268,4 +1275,19 @@ def data_rub() -> list:
             "operationAmount": {"amount": "48223.05", "currency": {"name": "руб.", "code": "RUB"}},
             "description": "Открытие вклада",
             "to": "Счет 41421565395219882431",
-        }]
+        },
+    ]
+
+
+@pytest.fixture
+def categories() -> Counter:
+    return Counter(
+        {
+            "Перевод организации": 40,
+            "Перевод с карты на карту": 19,
+            "Перевод с карты на счет": 16,
+            "Перевод со счета на счет": 15,
+            "Открытие вклада": 10,
+            None: 1,
+        }
+    )

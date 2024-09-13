@@ -1,6 +1,6 @@
 import pytest
 
-from src.processing import filter_by_state, sort_by_date, find_transaction, rub_transactions
+from src.processing import filter_by_state, find_transaction, rub_transactions, sort_by_date
 
 
 def test_filter_by_state(list_of_dict: list, filtered_executed: list, filtered_canceled: list) -> None:
@@ -111,7 +111,7 @@ def test_sort_by_date_parameterise(dct: list, result: list) -> None:
 
 
 def test_find_transaction(data: list, data_find: list) -> None:
-    assert find_transaction(data, 'перевод') == data_find
+    assert find_transaction(data, "перевод") == data_find
 
 
 def test_rub_transaction(data: list, data_rub: list) -> None:

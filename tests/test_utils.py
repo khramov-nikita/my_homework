@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from pandas.core.frame import DataFrame
 
-from src.utils import reading_json, reading_csv, reading_excel
+from src.utils import reading_csv, reading_excel, reading_json
 
 utils_path = os.path.abspath(__file__)
 reading_csv_path = os.path.join(utils_path[:-20], "data", "test.csv")
