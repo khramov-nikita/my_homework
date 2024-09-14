@@ -1,3 +1,5 @@
+from collections import Counter
+
 from src.masks import get_mask_account, get_mask_card_number
 
 
@@ -5,7 +7,7 @@ def mask_account_card(account_card: str) -> str:
     """Функция маскирует номер счета или карты в зависимости от ввода"""
     if not account_card:
         return "Неверные данные"
-    split_data: list = account_card.split()
+    split_data: list = str(account_card).split()
     if split_data[0].isalpha() and split_data[-1].isdigit():
         if account_card[0:4] == "Счет" and len(account_card[5:]) == 20:
             split_acc = split_data
@@ -36,4 +38,15 @@ def get_date(date: str) -> str:
     if len(date) >= 10 and not f"{date[8:10]}{date[5:7]}{date[:4]}".isdigit():
         return "Неверные данные"
     result: str = f"{date[8:10]}.{date[5:7]}.{date[:4]}"
+    return result
+
+
+def count_categories(data: list) -> Counter:
+    """
+    Функция подсчитывает количество категорий транзакций
+    """
+    categories = []
+    for transaction in data:
+        categories.append(transaction.get("description"))
+    result = Counter(categories)
     return result

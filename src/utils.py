@@ -1,6 +1,10 @@
+import csv
 import json
 import logging
 import os
+
+import pandas as pd
+from pandas.core.frame import DataFrame
 
 utils_path = os.path.abspath(__file__)
 utils_log_path = os.path.join(utils_path[:-13], "logs", "utils.log")
@@ -13,14 +17,14 @@ app_logger.addHandler(file_handler)
 app_logger.setLevel(logging.DEBUG)
 
 
-def convert_json(json_data: str) -> list:
+def reading_json(path: str) -> list:
     """
     Функция принимает путь к json файлу и конвертирует указанный файл в python объект
     """
 
     try:
         app_logger.info("Попытка загрузки json фала")
-        with open(json_data, encoding="utf-8") as f:
+        with open(path, encoding="utf-8") as f:
             result: list = json.load(f)
     except Exception as e:
         app_logger.error(f"Неудачная попытка загрузки json файла: {e}")
@@ -28,3 +32,24 @@ def convert_json(json_data: str) -> list:
     else:
         app_logger.info("Успешная загрузка json файла")
         return result
+
+
+def reading_csv(path: str) -> list:
+    """
+    Функция считывает CSV файл и возвращает список словарей.
+    """
+    result = []
+    with open(path, encoding="utf-8") as file:
+        reader = csv.DictReader(file, delimiter=";")
+        for row in reader:
+            result.append(row)
+        return result
+
+
+def reading_excel(path: str) -> list:
+    """
+    Функция считывает XLSX файл и возвращает список словарей.
+    """
+    excel_data: DataFrame = pd.read_excel(path)
+    result: list = excel_data.to_dict(orient="records")
+    return result

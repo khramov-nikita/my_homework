@@ -1,6 +1,6 @@
 import pytest
 
-from src.processing import filter_by_state, sort_by_date
+from src.processing import filter_by_state, find_transaction, rub_transactions, sort_by_date
 
 
 def test_filter_by_state(list_of_dict: list, filtered_executed: list, filtered_canceled: list) -> None:
@@ -108,3 +108,11 @@ def test_sort_by_date_same_date(list_of_dict_same_date: list, list_of_dict_same_
 def test_sort_by_date_parameterise(dct: list, result: list) -> None:
     assert sort_by_date(dct) == result
     return
+
+
+def test_find_transaction(data: list, data_find: list) -> None:
+    assert find_transaction(data, "перевод") == data_find
+
+
+def test_rub_transaction(data: list, data_rub: list) -> None:
+    assert rub_transactions(data) == data_rub

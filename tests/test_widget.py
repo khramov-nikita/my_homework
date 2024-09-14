@@ -1,6 +1,8 @@
+from collections import Counter
+
 import pytest
 
-from src.widget import get_date, mask_account_card
+from src.widget import count_categories, get_date, mask_account_card
 
 
 def test_mask_card(data_card: str, masked_card: str) -> None:
@@ -52,3 +54,7 @@ def test_mask_account_card(data: str, masked: str) -> None:
 def test_get_date(date: str, masked_date: str) -> None:
     assert get_date(date) == masked_date
     return
+
+
+def test_count_categories(correct_json: list, categories: Counter) -> None:
+    assert count_categories(correct_json) == categories
